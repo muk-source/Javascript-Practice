@@ -164,4 +164,59 @@ multiply(value) // therefore here number becomes 20 when passeed
 
 
 
+// Assigning an object to a variable and cloning it create two different references,
+//  leading to different behaviors when modifying the objects.
+
+
+//  Direct Assignment:
+
+//  When you assign an object to a variable, you are essentially creating a reference
+//   to that object. Any modifications made to the object through that reference will affect the
+//    original object as well, since they both point to the same memory location.
+
+const originalObject = { name: "Mukund" };
+const referenceToObject = originalObject;
+referenceToObject.name = "John";
+console.log(originalObject); // Output: { name: "John" }
+
+
+
+// Cloning:
+
+// When you clone an object, you create a new object with the same properties and values
+//  as the original one, but they are stored in different memory locations. Modifications
+//   made to the cloned object will not affect the original object, and vice versa.
+
+
+  const originalObject2 = { name: "Mukund" };
+  const clonedObject = { ...originalObject2 };
+  clonedObject.name = "John";
+  console.log(originalObject2); // Output: { name: "Mukund" }
+
+//   The key difference lies in whether the modifications to one variable affect the other. 
+//   With direct assignment, changes to one variable will reflect in the other because they
+//    reference the same object. With cloning, changes made to the cloned object do not affect
+//     the original object, as they are separate entities.
+
+
+// Different ways of cloning an object
+// 1 . Using rhe spread operator
+
+const ob1 = {name:"Narendra Modi"}
+const c1 = {...ob1}
+console.log(c1)  
+
+// 2. Object.assign
+
+const ob2 = {name:"Rahul Gandhi"}
+const c2 = Object.assign({} , ob2)
+console.log(c2)
+
+// 3 using JSON methods
+
+const ob3 = {name:"Arvind Kejriwal"}
+const c3 = JSON.parse(JSON.stringify(ob3))
+console.log(c3)
+
+
 

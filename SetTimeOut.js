@@ -56,4 +56,50 @@ may be called out-of-order if necessary in order to run them before the timeout 
 */
 
 
+/*
+for a query like why the initial call to function is with requestIdleCallback , it is because 
 
+Consider the following timeline of events:
+
+    mySetTimeout is called, and the initial check runs immediately.
+    The check function enters a loop, continuously checking the time.
+    The main thread is blocked, preventing the browser from handling any other tasks.
+    Once the delay is met, the callback is executed.
+    The browser becomes responsive again, but only after the delay
+
+    read this as check() is used to run in place of triggerCallback
+
+        Initial Check Call:
+        When check is called initially, it immediately evaluates the if condition.
+        If the condition is not met, it schedules check to run during idle periods using requestIdleCallback.
+
+    requestIdleCallback Handling:
+        The requestIdleCallback ensures that the check function will run during the browser's idle periods, allowing other tasks to run in the meantime.
+
+    Non-Blocking Console Log:
+        console.log("Mukund") is executed immediately after the initial call to check, and it works fine because the initial check does not block for long periods (just one immediate execution).
+
+Potential Issues (Under Different Conditions)
+
+    Immediate Blocking:
+        In a real-world scenario with a heavy load or complex operations, the initial call to check might still block the main thread, causing performance issues.
+*/
+
+// chatgpt explanation  for above code    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+// function mySetTimeout(callback,delay){
+//   var startTime= Date.now();
+//   function check() {
+//     if(Date.now() > startTime+delay){
+//       callback();
+//     }
+//     else requestIdleCallback(check);
+//   }
+//   check()
+//   console.log("Mukund")
+// }
+
+// mySetTimeout(()=>{
+//   console.log("hi")
+// },3000)
+
+// I tried to run this code , and it wirks fine , then tell me why above explanation is fine

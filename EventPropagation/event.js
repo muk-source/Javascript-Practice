@@ -47,12 +47,16 @@ const form = document.querySelector("form");
 
 
 
-// Event delegation is a technique used in JavaScript to handle events efficiently, especially when dealing with a large number of elements. Instead of attaching event listeners directly to individual elements,
-// event delegation involves attaching a single event listener to a parent element that will react to events triggered by its child elements.
+// Event delegation is a technique used in JavaScript to handle events efficiently, 
+// especially when dealing with a large number of elements. Instead of attaching event listeners
+//  directly to individual elements,
+// event delegation involves attaching a single event listener to a parent element that will react to 
+//events triggered by its child elements.
 
 // When an event occurs on a child element, it bubbles up to its parent elements in the DOM hierarchy. 
 
-// Event delegation takes advantage of this bubbling mechanism. The event listener attached to the parent element can then determine the target of the event and handle it accordingly.
+// Event delegation takes advantage of this bubbling mechanism. The event listener attached to the parent
+// element can then determine the target of the event and handle it accordingly.
 
 document.getElementById('parent-list').addEventListener('click', function(event) {
     // Check if the clicked element is an <li> element

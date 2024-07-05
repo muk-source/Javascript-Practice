@@ -7,10 +7,10 @@ var eventCount = 0;
 btn.addEventListener("click", () => {
   console.log("hello");
   click.innerHTML = ++clickCount;
-  //   debounceCount();
-//   throttleCount()
-//   debouncepolyfill();
-     throttlePolyfill()
+  debounceCount();
+  //   throttleCount()
+  //   debouncepolyfill();
+  //  throttlePolyfill()
 });
 
 //Debouncing is a technique that delays the execution of a function until the user stops performing a
@@ -47,25 +47,24 @@ const debouncepolyfill = myDebounce(() => {
 //This way, you can avoid running your code too frequently, which might cause janky user interface or
 //high CPU usage.
 
-
 const throttleCount = _.throttle(() => {
   event.innerHTML = ++eventCount;
 }, 800);
 
 // polyfill for throttle
-// in throttle , we calculate the time between the event fired again, so if the event fired again in less time 
+// in throttle , we calculate the time between the event fired again, so if the event fired again in less time
 // then the delay (now - last < delay) , we just return and not do anything but if the event fired after the delay
 // we then update the last so that we now the time of current event time and we implement our callback .
 const myThrottle = (cb, delay) => {
-    let last = 0
-    return function (...args) {
-       let now = new Date().getTime()
-       if(now-last<delay) return;
-       last = now
-       return cb(...args)
-    }
-}
+  let last = 0;
+  return function (...args) {
+    let now = new Date().getTime();
+    if (now - last < delay) return;
+    last = now;
+    return cb(...args);
+  };
+};
 
 const throttlePolyfill = myThrottle(() => {
-    event.innerHTML = ++eventCount;
-},800)
+  event.innerHTML = ++eventCount;
+}, 800);

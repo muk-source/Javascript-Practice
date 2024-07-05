@@ -26,26 +26,26 @@
 // obj2.farewell()
 
 // // Tricky Question
-// var length = 4
-// function callback () {
-//     console.log(this.length)
-// }
-// const object = {
-//     length:5,
-//     method (fn) {
-//         fn() // this will print 4 becasue fn() is called inside object which is method (fn) , here it will not find length , hence it will se in global object.
-//     }
-// }
+var length = 4
+function callback () {
+    console.log(this.length)
+}
+const object = {
+    length:5,
+    method (fn) {    
+        fn() // this will print 4 becasue fn() is called inside object which is method (fn) , here it will not find length , hence it will se in global object.
+    }
+}
 
-// const object2 = {
-//     length:5,
-//     method () { // arguments = [callback , 2, 3] --> array is the object itself and array.lenght = 3
-//         arguments[0]() // this will print 3
-//     }
-// }
+const object2 = {
+    length:5,
+    method () { // arguments = [callback , 2, 3] --> array is the object itself and array.lenght = 3
+        arguments[0]() // this will print 3
+    }
+}
 
-// object.method(callback)
-// object2.method(callback,2,3)
+object.method(callback)
+object2.method(callback,2,3)
 
 // Explicit Binding of this keyword (call , bind , apply)
 /* 

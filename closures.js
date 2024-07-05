@@ -153,14 +153,14 @@ const clumsyProduct = (num1,num2) => {
     return num1*num2
 }
 
-function memoize(fn){
+function memoize(fn,context){ // context is optional
     const res = {}
     return function (...args){
         console.log("normal",args)
         let argscache = JSON.stringify(args)
         console.log("args",argscache)
         if(!res[argscache]) {
-            res[argscache] = fn.call(this,...args)
+            res[argscache] = fn.call(context || this,...args) // if there is any context provided otherwise use the current "this" 
         }
         return res[argscache]
     }

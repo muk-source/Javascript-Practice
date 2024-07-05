@@ -75,7 +75,7 @@
 // }).then((data) => {
 //     console.log(data)
 // }).catch((error)=> {
-//     console.log(error)
+//     console.log(error) // Defeat will be catched here
 //     return job(false)
 // }).then((data) =>{
 //     console.log(data)
