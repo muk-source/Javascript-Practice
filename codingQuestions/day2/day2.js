@@ -124,7 +124,7 @@ console.log(mergeSortedArrays2([1, 3, 5, 7], [2, 4, 6, 8]));
 function checkAnagrams(str1, str2) {
   function check(str1) {
     str1
-      .replace("/[^a-zA-Z0-9]/g", "") // removes any non-alphanumberic character
+      .replace(/[^a-zA-Z0-9]/g, "") // removes any non-alphanumberic character
       .toLowerCase() // converts into lowerCase
       .split() // converts string to char array
       .sort() // sort the array alphabetically
